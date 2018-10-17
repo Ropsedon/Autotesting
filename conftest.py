@@ -3,8 +3,10 @@ import pytest
 from fixture.application import Application
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def app(request):
     fixture = Application()
     request.addfinalizer(fixture.destroy)
     return fixture
+
+"""@pytest.fixture(scope="session") - для запуска в одном браузере"""
